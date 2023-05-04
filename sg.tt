@@ -1,0 +1,29 @@
+/*
+resource "aws_security_group" "Traffic" {
+    name = "Allow HTTPS"
+
+    ingress = [ {
+      cidr_blocks = [ "0.0.0.0/0" ]
+      description = "Incoming traffic - HTTPS"
+      from_port = 443
+      ipv6_cidr_blocks = [ "::/0" ]
+      prefix_list_ids = [ "value" ]
+      protocol = "TCP"
+      security_groups = [ "value" ]
+      self = false
+      to_port = 443
+    } ]
+
+    egress = [ {
+      cidr_blocks = [ "0.0.0.0/0" ]
+      description = "Incoming traffic - HTTPS"
+      from_port = 443
+      ipv6_cidr_blocks = [ "::/0" ]
+      prefix_list_ids = [ "value" ]
+      protocol = "TCP"
+      security_groups = [ "value" ]
+      self = false
+      to_port = 443
+    } ]
+}
+*/
