@@ -60,9 +60,10 @@ resource "aws_api_gateway_method" "api_method" {
 resource "aws_api_gateway_integration" "agw_integration" {
     rest_api_id = aws_api_gateway_rest_api.agw_rapi.id
     resource_id = aws_api_gateway_resource.agw_oregon.id
-    http_method = "GET"
+    http_method = aws_api_gateway_method.api_method.http_method
     integration_http_method = "ANY"
-    type = "MOCK" 
+    type = "AWS_PROXY"
+    uri = aws_lambda_function.simple_lambda.invoke_arn
 }
 
 resource "aws_api_gateway_deployment" "agw_deployment" {
