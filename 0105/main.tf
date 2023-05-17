@@ -86,3 +86,15 @@ resource "aws_api_gateway_method_settings" "agw_method_settings" {
       logging_level = "OFF"
     }
 }
+
+resource "aws_lambda_permission" "apigw_lambda" {
+  statement_id  = "AllowExecutionFromAPIGateway"
+  action        = "lambda:InvokeFunction"
+  function_name = aws_lambda_function.simple_lambda.function_name
+  principal     = "apigateway.amazonaws.com"
+
+  # More: http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-control-access-using-iam-policies-to-invoke-api.html
+  source_arn = "arn:aws:execute-api:us-west-2:${data.aws_caller_identity.current.account_id}:${aws_api_gateway_rest_api.agw_rapi.id}/*/${aws_api_gateway_method.api_method.http_method}${aws_api_gateway_resource.agw_oregon.path}"
+}
+
+data "aws_caller_identity" "current" {}
