@@ -1,10 +1,16 @@
 {
-    "name": "lambda",
-    "version": "1.0.0",
-    "type": "module",
-    "main": "index.js",
-    "author": "",
-    "dependencies": {
-      "nanoid": "^4.0.0"
-    }
-  }
+  "name": "lambda",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "lambda.js",
+  "author": "",
+  "dependencies": {
+    "aws4": "^1.12.0",
+    "mongodb": "^5.5.0"
+  },
+  "scripts": {
+    "start": "node lambda.js"
+  },
+  "license": "ISC",
+  "description": "lambda function"
+}
